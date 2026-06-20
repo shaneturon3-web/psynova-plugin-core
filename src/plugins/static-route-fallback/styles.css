@@ -1,0 +1,30 @@
+.static-route-fallback {
+    display: grid;
+    gap: 1rem;
+}
+
+.static-route-fallback__summary {
+    margin: 0;
+    color: var(--psynova-muted, #6c757d);
+}
+
+.static-route-fallback__facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1rem;
+    margin: 0;
+}
+
+.static-route-fallback__facts dt {
+    font-weight: 700;
+}
+
+.static-route-fallback__facts dd {
+    margin: 0;
+    color: var(--psynova-muted, #495057);
+}
+
+.static-route-fallback__notes {
+    margin: 0;
+    padding-left: 1.25rem;
+}

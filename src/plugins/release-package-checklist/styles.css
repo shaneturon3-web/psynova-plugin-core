@@ -1,0 +1,32 @@
+.release-package-checklist {
+    display: grid;
+    gap: 1rem;
+}
+
+.release-package-checklist__description,
+.release-package-checklist__notes,
+.release-package-checklist__empty {
+    margin: 0;
+    color: var(--psynova-muted, #5f6b7a);
+}
+
+.release-package-checklist__list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.release-package-checklist__item {
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+}
+
+.release-package-checklist__item h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+}
+
+.release-package-checklist__status {
+    margin: 0 0 0.35rem;
+    font-weight: 700;
+}

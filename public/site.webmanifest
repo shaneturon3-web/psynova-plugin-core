@@ -1,0 +1,9 @@
+{
+  "name": "PsyNova",
+  "short_name": "PsyNova",
+  "description": "Professional Practice Infrastructure",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#243b53"
+}

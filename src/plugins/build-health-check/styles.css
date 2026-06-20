@@ -1,0 +1,38 @@
+.build-health-check {
+    display: grid;
+    gap: 1rem;
+}
+
+.build-health-check__description,
+.build-health-check__notes {
+    margin: 0;
+    color: var(--psynova-muted, #6c757d);
+}
+
+.build-health-check__list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.build-health-check__item {
+    padding: 0.875rem;
+    border: 1px solid var(--psynova-border, #dee2e6);
+    border-radius: 0.75rem;
+    background: var(--psynova-surface-soft, #f8f9fa);
+}
+
+.build-health-check__item h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.build-health-check__status {
+    display: inline-block;
+    margin: 0 0 0.5rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: var(--psynova-accent-soft, #e9ecef);
+    font-size: 0.875rem;
+    font-weight: 700;
+}

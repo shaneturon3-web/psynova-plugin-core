@@ -1,0 +1,50 @@
+.capability-selector {
+    display: grid;
+    gap: 1rem;
+}
+
+.capability-selector__header {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.capability-selector__title,
+.capability-selector__item-title {
+    margin: 0;
+}
+
+.capability-selector__intro,
+.capability-selector__item-description,
+.capability-selector__item-status,
+.capability-selector__empty {
+    margin: 0;
+}
+
+.capability-selector__intro,
+.capability-selector__item-description,
+.capability-selector__empty {
+    color: #5f6872;
+}
+
+.capability-selector__list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.capability-selector__item {
+    padding: 0.9rem;
+    border: 1px solid #dde2e7;
+    border-radius: 0.75rem;
+    background: #ffffff;
+}
+
+.capability-selector__item[data-selected="true"] {
+    border-color: #9bb7d4;
+    background: #f4f8fc;
+}
+
+.capability-selector__item-status {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}

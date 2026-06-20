@@ -1,0 +1,47 @@
+.website-public {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.website-public__hero {
+    padding: 2rem;
+    border-radius: 12px;
+    background: #f8f9fa;
+}
+
+.website-public__name {
+    margin: 0 0 0.5rem;
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.website-public__line {
+    margin: 0;
+    font-size: clamp(1.15rem, 3vw, 1.65rem);
+    color: #495057;
+}
+
+.website-public__statement {
+    margin: 1rem 0 0;
+    font-size: 1.05rem;
+    color: #212529;
+}
+
+.website-public__section {
+    padding: 1.25rem;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+.website-public__section-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.website-public__section-body {
+    margin: 0;
+    color: #495057;
+    line-height: 1.6;
+}

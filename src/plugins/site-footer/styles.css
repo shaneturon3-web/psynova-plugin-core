@@ -1,0 +1,30 @@
+.site-footer {
+    margin-top: var(--psynova-spacing-xl, 2rem);
+    padding-top: var(--psynova-spacing-lg, 1.5rem);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.site-footer__brand {
+    font-weight: 700;
+    color: var(--psynova-brand-color, #1f4f8f);
+    margin-bottom: var(--psynova-spacing-xs, 0.5rem);
+}
+
+.site-footer__line,
+.site-footer__copyright {
+    color: var(--psynova-accent-color, #6c757d);
+    margin: 0.25rem 0;
+}
+
+.site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--psynova-spacing-sm, 0.75rem);
+    margin: var(--psynova-spacing-md, 1rem) 0;
+}
+
+.site-footer__links a {
+    color: var(--psynova-text-color, #212529);
+    text-decoration: none;
+    font-weight: 600;
+}

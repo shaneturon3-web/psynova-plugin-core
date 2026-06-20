@@ -1,0 +1,31 @@
+.cloudflare-pages-profile {
+    display: grid;
+    gap: 1rem;
+}
+
+.cloudflare-pages-profile__description {
+    margin: 0;
+    color: var(--psynova-muted, #5f6b7a);
+}
+
+.cloudflare-pages-profile__list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.cloudflare-pages-profile__row {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+}
+
+.cloudflare-pages-profile__row dt {
+    font-weight: 700;
+}
+
+.cloudflare-pages-profile__row dd {
+    margin: 0;
+}

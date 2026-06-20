@@ -1,0 +1,25 @@
+.pn-surface-gate {
+    max-width: var(--pn-max-width, 1180px);
+    margin: 0 auto var(--pn-space-6, 2rem);
+}
+
+.pn-system-review-intro {
+    padding: var(--pn-space-5, 1.5rem);
+    border: 1px solid var(--pn-border, #d8cfc0);
+    border-radius: var(--pn-radius-lg, 24px);
+    background: var(--pn-surface-soft, #fbf8f1);
+}
+
+.pn-system-review-intro h2 {
+    margin: 0 0 var(--pn-space-2, 0.5rem);
+}
+
+.pn-system-review-intro p {
+    max-width: var(--pn-reading-width, 760px);
+    margin: 0;
+    color: var(--pn-text-muted, #626262);
+}
+
+.pn-home-gate-note {
+    display: none;
+}

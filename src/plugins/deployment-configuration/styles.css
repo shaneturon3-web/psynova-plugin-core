@@ -1,0 +1,38 @@
+.deployment-configuration {
+    display: grid;
+    gap: 1rem;
+}
+
+.deployment-configuration__title,
+.deployment-configuration__intro,
+.deployment-configuration__list {
+    margin: 0;
+}
+
+.deployment-configuration__intro {
+    color: #5f6872;
+}
+
+.deployment-configuration__list {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.deployment-configuration__row {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.55fr) 1fr;
+    gap: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #dde2e7;
+    border-radius: 0.75rem;
+    background: #ffffff;
+}
+
+.deployment-configuration__key {
+    font-weight: 700;
+}
+
+.deployment-configuration__value {
+    margin: 0;
+    color: #5f6872;
+}

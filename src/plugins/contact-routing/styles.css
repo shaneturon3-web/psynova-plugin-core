@@ -1,0 +1,50 @@
+.contact-routing {
+    display: grid;
+    gap: 1rem;
+}
+
+.contact-routing__title,
+.contact-routing__statement,
+.contact-routing__meta,
+.contact-routing__option-label,
+.contact-routing__option-description,
+.contact-routing__empty {
+    margin: 0;
+}
+
+.contact-routing__statement,
+.contact-routing__option-description,
+.contact-routing__empty {
+    color: #5f6872;
+}
+
+.contact-routing__meta {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.45fr) 1fr;
+    gap: 0.5rem 1rem;
+    padding: 0.85rem;
+    border: 1px solid #dde2e7;
+    border-radius: 0.75rem;
+    background: #ffffff;
+}
+
+.contact-routing__meta dt {
+    font-weight: 700;
+}
+
+.contact-routing__meta dd {
+    margin: 0;
+    color: #5f6872;
+}
+
+.contact-routing__options {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.contact-routing__option {
+    padding: 0.85rem;
+    border: 1px solid #dde2e7;
+    border-radius: 0.75rem;
+    background: #ffffff;
+}

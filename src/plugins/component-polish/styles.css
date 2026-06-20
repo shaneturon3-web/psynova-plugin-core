@@ -1,0 +1,217 @@
+a {
+    color: var(--pn-accent-strong);
+}
+
+a:hover {
+    color: var(--pn-accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--pn-brass);
+    outline-offset: 3px;
+    border-radius: var(--pn-radius-sm);
+}
+
+.pn-details,
+details {
+    border: 1px solid var(--pn-border);
+    border-radius: var(--pn-radius-md);
+    background: var(--pn-surface-soft);
+    padding: var(--pn-space-3) var(--pn-space-4);
+}
+
+.pn-details summary,
+details summary {
+    cursor: pointer;
+    color: var(--pn-accent-strong);
+    font-weight: 800;
+}
+
+.pn-pre,
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: var(--pn-space-3) 0 0;
+    padding: var(--pn-space-4);
+    border: 1px solid var(--pn-border);
+    border-radius: var(--pn-radius-sm);
+    background: #f1eadf;
+    color: var(--pn-text-soft);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.plugin-section h2,
+.plugin-section h3 {
+    color: var(--pn-text);
+    line-height: 1.1;
+}
+
+.plugin-section p,
+.plugin-section li {
+    color: var(--pn-text-soft);
+}
+
+.plugin-section ul {
+    padding-left: 1.2rem;
+}
+
+.plugin-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.plugin-section th,
+.plugin-section td {
+    padding: var(--pn-space-2);
+    border-bottom: 1px solid var(--pn-border);
+    text-align: left;
+}
+
+.plugin-section [class*="card"],
+.plugin-section article {
+    line-height: 1.5;
+}
+
+.plugin-section:not(#plugin-landing-composition):not(#plugin-navigation):not(#plugin-site-footer) {
+    min-height: auto;
+}
+
+#plugin-navigation {
+    position: sticky;
+    top: var(--pn-space-3);
+    z-index: 10;
+    padding: var(--pn-space-3) var(--pn-space-4);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.84);
+    backdrop-filter: blur(12px);
+}
+
+#plugin-navigation nav,
+#plugin-navigation ul,
+#plugin-navigation .navigation,
+#plugin-navigation .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pn-space-2);
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#plugin-navigation a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    border-radius: 999px;
+    color: var(--pn-text-soft);
+    font-size: var(--pn-font-sm);
+    font-weight: 800;
+    line-height: 1.1;
+    padding: 0.55rem 0.8rem;
+    text-decoration: none;
+}
+
+#plugin-navigation a:hover,
+#plugin-navigation a[aria-current="page"] {
+    background: var(--pn-accent-soft);
+    color: var(--pn-accent-strong);
+}
+
+#plugin-site-footer {
+    margin-top: var(--pn-space-6);
+    background: transparent;
+    border-style: solid none none;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: left;
+}
+
+#plugin-site-footer p,
+#plugin-site-footer a {
+    color: var(--pn-text-muted);
+}
+
+#plugin-component-polish {
+    order: 90;
+}
+
+.pn-polish {
+    display: grid;
+    gap: var(--pn-space-4);
+}
+
+.pn-polish h2 {
+    margin: 0;
+    font-size: var(--pn-font-xl);
+}
+
+.pn-polish-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pn-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pn-polish-list li {
+    border: 1px solid var(--pn-border);
+    border-radius: 999px;
+    background: var(--pn-surface-soft);
+    color: var(--pn-text-soft);
+    font-size: var(--pn-font-xs);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.55rem;
+    text-transform: uppercase;
+}
+
+@media (max-width: 899px) {
+    #plugin-navigation {
+        position: static;
+        border-radius: var(--pn-radius-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .app-shell {
+        gap: var(--pn-space-4);
+    }
+
+    #plugin-navigation nav,
+    #plugin-navigation ul,
+    #plugin-navigation .navigation,
+    #plugin-navigation .nav-list {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #plugin-navigation a {
+        width: 100%;
+    }
+}
+
+
+.plugin-section:empty {
+    display: none;
+}
+
+.app-shell[data-route="/"] .plugin-section[data-plugin="public-surface-gate"] {
+    display: none;
+}
+
+.app-shell[data-route="/system-review"] {
+    display: grid;
+    gap: var(--pn-space-5, 1.5rem);
+}
+
+.app-shell[data-route="/system-review"] .plugin-section {
+    max-width: var(--pn-max-width, 1180px);
+    width: min(100%, var(--pn-max-width, 1180px));
+    margin-left: auto;
+    margin-right: auto;
+}

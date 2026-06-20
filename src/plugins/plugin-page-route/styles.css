@@ -1,0 +1,20 @@
+.plugin-page-route {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.plugin-page-route__summary {
+    margin: 0;
+    color: #5f6872;
+}
+
+.plugin-page-route__list {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.plugin-page-route__item code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
