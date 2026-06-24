@@ -10,10 +10,18 @@ function cleanTropicaliserId(value) {
 }
 
 function getDeploymentTropicaliserId() {
+    if (typeof window === 'undefined') {
+        return null;
+    }
+
     if (
-        typeof window !== 'undefined' &&
-        typeof window.__PSYNOVA_TROPICALISER_ID__ === 'string'
+        window.__PSYNOVA_DEPLOYMENT__ &&
+        typeof window.__PSYNOVA_DEPLOYMENT__.tropicaliserId === 'string'
     ) {
+        return window.__PSYNOVA_DEPLOYMENT__.tropicaliserId;
+    }
+
+    if (typeof window.__PSYNOVA_TROPICALISER_ID__ === 'string') {
         return window.__PSYNOVA_TROPICALISER_ID__;
     }
 
