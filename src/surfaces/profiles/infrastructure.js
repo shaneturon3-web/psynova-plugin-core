@@ -9,7 +9,6 @@ export const infrastructureProfile = {
         "#/operating-map",
         "#/organizations",
         "#/diagnostic",
-        "#/reservation",
         "#/contact"
     ],
     publicPlugins: [
