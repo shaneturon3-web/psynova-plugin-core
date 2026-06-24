@@ -18,8 +18,30 @@ function normalize(value) {
   return null;
 }
 
+function readLocaleParam(params) {
+  if (params.has('lang')) return params.get('lang');
+  if (params.has('locale')) return params.get('locale');
+  return null;
+}
+
+function normalizeRequestedLocale(value) {
+  if (value === null) return null;
+  return normalize(value) || DEFAULT_LOCALE;
+}
+
 function fromQuery() {
-  return normalize(new URLSearchParams(window.location.search).get('lang'));
+  const params = new URLSearchParams(window.location.search);
+  return normalizeRequestedLocale(readLocaleParam(params));
+}
+
+function fromHashQuery() {
+  const hash = window.location.hash || '';
+  const queryIndex = hash.indexOf('?');
+
+  if (queryIndex === -1) return null;
+
+  const params = new URLSearchParams(hash.slice(queryIndex + 1));
+  return normalizeRequestedLocale(readLocaleParam(params));
 }
 
 function fromStorage() {
@@ -126,15 +148,32 @@ function buildAliases(localeSource) {
 }
 
 function getDictionary(locale) {
-  const localeSource = seedbank.locales?.[locale] || seedbank.locales?.[DEFAULT_LOCALE] || {};
+  const englishSource = seedbank.locales?.[DEFAULT_LOCALE] || {};
+  const localeSource = seedbank.locales?.[locale] || {};
+
   return {
-    ...buildAliases(localeSource),
-    ...localeSource,
+    primary: {
+      ...buildAliases(localeSource),
+      ...localeSource,
+    },
+    fallback: {
+      ...buildAliases(englishSource),
+      ...englishSource,
+    },
   };
 }
 
+function getSlotValue(dictionaries, key) {
+  return (
+    dictionaries.primary[key] ??
+    getNestedValue(dictionaries.primary, key) ??
+    dictionaries.fallback[key] ??
+    getNestedValue(dictionaries.fallback, key)
+  );
+}
+
 export function resolveLocale() {
-  return fromQuery() || fromStorage() || fromBrowser() || DEFAULT_LOCALE;
+  return fromQuery() || fromHashQuery() || fromStorage() || fromBrowser() || DEFAULT_LOCALE;
 }
 
 export function applyLanguage(root = document) {
@@ -150,7 +189,7 @@ export function applyLanguage(root = document) {
 
   root.querySelectorAll('[data-i18n]').forEach((node) => {
     const key = node.dataset.i18n;
-    const value = dictionary[key] ?? getNestedValue(dictionary, key);
+    const value = getSlotValue(dictionary, key);
 
     if (typeof value === 'string') {
       node.textContent = value;
