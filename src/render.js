@@ -40,10 +40,21 @@ export function render(route = '/', plugins = [], context = {}) {
     }
 
     if (activePlugins.length === 0) {
-        const empty = document.createElement('p');
-        empty.className = 'empty-state';
-        empty.textContent = 'No plugins enabled.';
-        shell.appendChild(empty);
+        const fallback = document.createElement('section');
+        fallback.className = 'plugin-section plugin-section--fallback';
+        fallback.id = 'plugin-render-fallback';
+        fallback.dataset.plugin = 'render-fallback';
+        fallback.setAttribute('aria-label', 'PsyNova fallback surface');
+
+        const heading = document.createElement('h1');
+        heading.textContent = 'PsyNova';
+
+        const body = document.createElement('p');
+        body.textContent = 'Professional Practice Infrastructure';
+
+        fallback.appendChild(heading);
+        fallback.appendChild(body);
+        shell.appendChild(fallback);
     }
 
     app.appendChild(shell);
