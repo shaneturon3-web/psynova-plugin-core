@@ -4,7 +4,7 @@ import './styles.css';
 function createLink(item) {
     const anchor = document.createElement('a');
     anchor.href = item.route || '#/';
-    anchor.textContent = item.label || 'Link';
+    anchor.innerHTML = `<span data-i18n="footer.link.${item.route || '#'}">${item.label || 'Link'}</span>`;
     return anchor;
 }
 
@@ -14,7 +14,7 @@ export default {
     enabled: true,
     version: '0.1.0',
     description: 'Clean public footer from data',
-    routes: ['#/'],
+    routes: ['*'],
     render(container) {
         container.replaceChildren();
 
@@ -23,11 +23,11 @@ export default {
 
         const brand = document.createElement('div');
         brand.className = 'site-footer__brand';
-        brand.textContent = footer.brand || 'PsyNova';
+        brand.innerHTML = `<span data-i18n="footer.brand">${footer.brand || 'PsyNova'}</span>`;
 
         const line = document.createElement('p');
         line.className = 'site-footer__line';
-        line.textContent = footer.line || 'Professional Practice Infrastructure';
+        line.innerHTML = `<span data-i18n="footer.line">${footer.line || 'Professional Practice Infrastructure'}</span>`;
 
         const links = document.createElement('nav');
         links.className = 'site-footer__links';
@@ -43,7 +43,7 @@ export default {
 
         const copyright = document.createElement('p');
         copyright.className = 'site-footer__copyright';
-        copyright.textContent = footer.copyright || '';
+        copyright.innerHTML = `<span data-i18n="footer.copyright">${footer.copyright || ''}</span>`;
 
         footerElement.append(brand, line, links, copyright);
         container.appendChild(footerElement);

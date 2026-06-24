@@ -85,9 +85,9 @@
 }
 
 .pn-button-primary {
-    border: 1px solid var(--pn-accent);
-    background: var(--pn-accent);
-    color: var(--pn-bg);
+    border: 1px solid var(--pn-action);
+    background: var(--pn-action);
+    color: var(--pn-action-text);
 }
 
 .pn-button-secondary {
@@ -119,6 +119,7 @@
 }
 
 .pn-system-title {
+    text-align: center;
     margin: 0;
     color: var(--pn-accent-strong);
     font-size: var(--pn-font-xl);
@@ -308,4 +309,99 @@
     .pn-public-card:hover {
         transform: none;
     }
+}
+
+/* Organization card translation layout */
+.pn-organization-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 8rem;
+  padding: 1.5rem 1.75rem;
+  text-align: left;
+}
+
+.pn-organization-card strong {
+  display: block;
+  max-width: 100%;
+  font-size: clamp(1rem, 1.15vw, 1.2rem);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.pn-organization-examples {
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
+  line-height: 1.35;
+  font-weight: 500;
+  opacity: 0.78;
+}
+
+/* Wider value/practice type section without copy rewriting */
+.pn-section-header {
+  max-width: 72rem;
+}
+
+.pn-section-header h2 {
+  max-width: 72rem;
+}
+
+.pn-section-header h2 [data-i18n="landing.value.heading.line1"] {
+  white-space: pre-line;
+}
+
+html[lang="en"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"] {
+  font-size: 0;
+}
+
+html[lang="en"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before {
+  content: "More professional time\A Less administration.";
+  white-space: pre-line;
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: 0.95;
+}
+
+html[lang="fr-CA"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"] {
+  font-size: 0;
+}
+
+html[lang="fr-CA"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before {
+  content: "Plus de temps pour votre pratique\A Moins d’administration.";
+  white-space: pre-line;
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: 0.95;
+}
+
+html[lang="es-MX"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"] {
+  font-size: 0;
+}
+
+html[lang="es-MX"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before {
+  content: "Más tiempo para atender\A Menos administración.";
+  white-space: pre-line;
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: 0.95;
+}
+
+.pn-layer-card {
+  min-width: min(100%, 24rem);
+}
+
+/* Normalize value heading size against surrounding section headings */
+html[lang="en"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before,
+html[lang="fr-CA"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before,
+html[lang="es-MX"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before {
+  font-size: clamp(2.35rem, 4.2vw, 4.25rem);
+  line-height: 0.98;
+}
+
+/* Final value heading scale: design-system H2 range */
+html[lang="en"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before,
+html[lang="fr-CA"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before,
+html[lang="es-MX"] .pn-section-header h2 [data-i18n="landing.value.heading.line1"]::before {
+  font-size: clamp(2.15rem, 3.35vw, 3.25rem);
+  line-height: 1;
 }

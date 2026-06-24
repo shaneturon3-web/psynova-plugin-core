@@ -1,3 +1,7 @@
+import operatingMapPlugin from './operating-map/plugin.js';
+import organizationsPlugin from './organizations/plugin.js';
+import diagnosticPlugin from './diagnostic/plugin.js';
+import contactPlugin from './contact/plugin.js';
 import websitePublic from './website-public/plugin.js';
 import organizationProfile from './organization-profile/plugin.js';
 import capabilitySelector from './capability-selector/plugin.js';
@@ -52,11 +56,7 @@ function routeVisible(pluginId, route) {
         return systemReviewPlugins.has(pluginId);
     }
 
-    if (publicRoutes.has(route)) {
-        return homeVisiblePlugins.has(pluginId);
-    }
-
-    return homeVisiblePlugins.has(pluginId);
+    return true;
 }
 
 function gated(plugin) {
@@ -88,6 +88,10 @@ function gated(plugin) {
 }
 
 export const plugins = [
+    contactPlugin,
+    diagnosticPlugin,
+    organizationsPlugin,
+    operatingMapPlugin,
     themeSystem,
     siteMetadata,
     componentPolish,

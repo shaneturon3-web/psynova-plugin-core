@@ -11,7 +11,7 @@ const navigationPlugin = {
     enabled: true,
     version: '0.1.0',
     description: 'Data-driven public navigation',
-    routes: ['#/'],
+    routes: ['*'],
 
     render(container, context) {
         container.replaceChildren();
@@ -34,7 +34,7 @@ const navigationPlugin = {
                 const link = document.createElement('a');
                 link.className = 'navigation__link';
                 link.href = text(item.route, '#/');
-                link.textContent = text(item.label, 'Link');
+                link.innerHTML = `<span data-i18n="nav.${text(item.route, '#/').replace('/', '').replace('#', '') || 'home'}">${text(item.label, 'Link')}</span>`;
                 link.dataset.navItem = text(item.id);
                 const currentRoute = context?.route || '/';
                 const itemRoute = text(item.route, '#/').replace(/^#/, '') || '/';

@@ -1,31 +1,32 @@
 export default {
-    brand: 'PsyNova',
-    line: 'Professional Practice Infrastructure',
+    brand: "PsyNova",
+    line: "Infrastructure pour pratiques professionnelles",
     links: [
         {
-            id: 'home',
-            label: 'Home',
-            route: '#/',
+            label: "Accueil",
+            route: "#/",
             enabled: true
         },
         {
-            id: 'capabilities',
-            label: 'Capabilities',
-            route: '#/capabilities',
+            label: "Carte",
+            route: "#/operating-map",
             enabled: true
         },
         {
-            id: 'organization',
-            label: 'Organization',
-            route: '#/organization',
+            label: "Organisation",
+            route: "#/organizations",
             enabled: true
         },
         {
-            id: 'contact',
-            label: 'Contact',
-            route: '#/contact',
+            label: "Diagnostic",
+            route: "#/diagnostic",
+            enabled: true
+        },
+        {
+            label: "Contact",
+            route: "#/contact",
             enabled: true
         }
     ],
-    copyright: '© 2026 PsyNova'
+    copyright: "© 2026 PsyNova"
 };

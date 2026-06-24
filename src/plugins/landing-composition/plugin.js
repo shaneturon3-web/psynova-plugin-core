@@ -9,37 +9,38 @@ function createAction(action, variant) {
     const link = document.createElement('a');
     link.className = `pn-button pn-button-${variant}`;
     link.href = text(action?.href, '#/');
-    link.textContent = text(action?.label, 'Continue');
+    const key = action?.i18nKey || `landing.action.${variant}`;
+    link.innerHTML = `<span data-i18n="${key}">${text(action?.label, 'Continue')}</span>`;
     return link;
 }
 
-function createCard(card) {
+function createCard(card, index = 0) {
     const article = document.createElement('article');
     article.className = 'pn-public-card';
 
     const title = document.createElement('h3');
-    title.textContent = text(card.title, 'Capability');
+    title.innerHTML = `<span data-i18n="${card.titleKey || `landing.card.${index}.title`}">${text(card.title, 'Capability')}</span>`;
 
     const description = document.createElement('p');
-    description.textContent = text(card.description, 'Configured capability.');
+    description.innerHTML = `<span data-i18n="${card.bodyKey || `landing.card.${index}.body`}">${text(card.description, 'Configured capability.')}</span>`;
 
     const status = document.createElement('span');
     status.className = 'pn-status-pill';
-    status.textContent = text(card.status, 'ready');
+    status.innerHTML = `<span data-i18n="${card.labelKey || `landing.card.${index}.label`}">${text(card.status, 'ready')}</span>`;
 
     article.append(title, description, status);
     return article;
 }
 
-function createSectionHeader(heading, body) {
+function createSectionHeader(heading, body, headingKey, bodyKey) {
     const header = document.createElement('div');
     header.className = 'pn-section-header';
 
     const title = document.createElement('h2');
-    title.textContent = text(heading, 'Section');
+    title.innerHTML = `<span data-i18n="${headingKey}">${text(heading, 'Section')}</span>`;
 
     const copy = document.createElement('p');
-    copy.textContent = text(body, '');
+    copy.innerHTML = `<span data-i18n="${bodyKey}">${text(body, '')}</span>`;
 
     header.append(title, copy);
     return header;
@@ -51,7 +52,7 @@ export default {
     enabled: true,
     version: '0.1.0',
     description: 'Composed public landing surface.',
-    routes: ['#/', '#/capabilities', '#/organization', '#/contact'],
+    routes: ['#/'],
 
     render(container) {
         const page = document.createElement('div');
@@ -65,14 +66,14 @@ export default {
 
         const eyebrow = document.createElement('p');
         eyebrow.className = 'pn-eyebrow';
-        eyebrow.textContent = text(content.hero.eyebrow, 'PsyNova');
+        eyebrow.innerHTML = `<span data-i18n="landing.hero.eyebrow">${text(content.hero.eyebrow, 'PsyNova')}</span>`;
 
         const heading = document.createElement('h1');
-        heading.textContent = text(content.hero.heading, 'Professional Practice Infrastructure');
+        heading.innerHTML = `<span data-i18n="landing.hero.heading">${text(content.hero.heading, 'Professional Practice Infrastructure')}</span>`;
 
         const subheading = document.createElement('p');
         subheading.className = 'pn-hero-subheading';
-        subheading.textContent = text(content.hero.subheading, '');
+        subheading.innerHTML = `<span data-i18n="landing.hero.subheading">${text(content.hero.subheading, '')}</span>`;
 
         const actions = document.createElement('div');
         actions.className = 'pn-actions';
@@ -88,21 +89,21 @@ export default {
 
         const panelTitle = document.createElement('h2');
         panelTitle.className = 'pn-system-title';
-        panelTitle.textContent = text(content.hero.systemPanel.title, 'Core System');
+        panelTitle.innerHTML = `<span data-i18n="landing.hero.systemPanel.title">${text(content.hero.systemPanel.title, 'Engine Base')}</span>`;
 
         const panelList = document.createElement('ul');
         panelList.className = 'pn-system-list';
 
-        for (const item of content.hero.systemPanel.items || []) {
+        for (const [index, item] of (content.hero.systemPanel.items || []).entries()) {
             const row = document.createElement('li');
             row.className = 'pn-system-item';
 
             const label = document.createElement('span');
-            label.textContent = item;
+            label.innerHTML = `<span data-i18n="landing.hero.systemPanel.item.${index}.label">${item}</span>`;
 
             const marker = document.createElement('span');
             marker.className = 'pn-system-marker';
-            marker.textContent = 'active';
+            marker.innerHTML = `<span data-i18n="landing.hero.systemPanel.item.${index}.status">active</span>`;
 
             row.append(label, marker);
             panelList.appendChild(row);
@@ -115,8 +116,16 @@ export default {
         strip.className = 'pn-section';
         const stripGrid = document.createElement('div');
         stripGrid.className = 'pn-card-grid';
-        for (const card of content.capabilityStrip || []) {
-            stripGrid.appendChild(createCard(card));
+        const capabilityKeys = [
+            ['landing.capabilityCards.practiceInterface.title', 'landing.capabilityCards.practiceInterface.body', 'landing.capabilityCards.practiceInterface.label'],
+            ['landing.capabilityCards.capabilitySet.title', 'landing.capabilityCards.capabilitySet.body', 'landing.capabilityCards.capabilitySet.label'],
+            ['landing.capabilityCards.organizationShape.title', 'landing.capabilityCards.organizationShape.body', 'landing.capabilityCards.organizationShape.label'],
+            ['landing.capabilityCards.deploymentShape.title', 'landing.capabilityCards.deploymentShape.body', 'landing.capabilityCards.deploymentShape.label']
+        ];
+
+        for (const [index, card] of (content.capabilityStrip || []).entries()) {
+            const [titleKey, bodyKey, labelKey] = capabilityKeys[index] || [];
+            stripGrid.appendChild(createCard({ ...card, titleKey, bodyKey, labelKey }, index));
         }
         strip.appendChild(stripGrid);
 
@@ -124,14 +133,24 @@ export default {
         organization.className = 'pn-section';
         organization.appendChild(createSectionHeader(
             content.organizationFit.heading,
-            content.organizationFit.body
+            content.organizationFit.body,
+            'landing.organization.heading',
+            'landing.organization.body'
         ));
         const organizationGrid = document.createElement('div');
         organizationGrid.className = 'pn-card-grid';
-        for (const label of content.organizationFit.cards || []) {
+        for (const [index, label] of (content.organizationFit.cards || []).entries()) {
             const card = document.createElement('article');
             card.className = 'pn-organization-card';
-            card.textContent = label;
+
+            const title = document.createElement('strong');
+            title.innerHTML = `<span data-i18n="landing.organization.card.${index}">${label}</span>`;
+
+            const examples = document.createElement('p');
+            examples.className = 'pn-organization-examples';
+            examples.innerHTML = `<span data-i18n="landing.organization.card.${index}.points"></span>`;
+
+            card.append(title, examples);
             organizationGrid.appendChild(card);
         }
         organization.appendChild(organizationGrid);
@@ -140,19 +159,29 @@ export default {
         infrastructure.className = 'pn-section';
         infrastructure.appendChild(createSectionHeader(
             content.modularInfrastructure.heading,
-            content.modularInfrastructure.body
+            content.modularInfrastructure.body,
+            'landing.value.heading.line1',
+            'landing.value.body'
         ));
         const layerGrid = document.createElement('div');
         layerGrid.className = 'pn-card-grid';
-        for (const column of content.modularInfrastructure.columns || []) {
+        const practiceTypeKeys = [
+            ['landing.practiceTypes.regular.title', 'landing.practiceTypes.regular.body'],
+            ['landing.practiceTypes.partial.title', 'landing.practiceTypes.partial.body'],
+            ['landing.practiceTypes.regulated.title', 'landing.practiceTypes.regulated.body']
+        ];
+
+        for (const [index, sourceColumn] of (content.modularInfrastructure.columns || []).entries()) {
+            const [titleKey, bodyKey] = practiceTypeKeys[index] || [];
+            const column = { ...sourceColumn, titleKey, bodyKey };
             const card = document.createElement('article');
             card.className = 'pn-public-card pn-layer-card';
 
             const title = document.createElement('h3');
-            title.textContent = text(column.title, 'Layer');
+            title.innerHTML = `<span data-i18n="${column.titleKey || `landing.practiceTypes.${index}.title`}">${text(column.title, 'Layer')}</span>`;
 
             const body = document.createElement('p');
-            body.textContent = text(column.body, '');
+            body.innerHTML = `<span data-i18n="${column.bodyKey || `landing.practiceTypes.${index}.body`}">${text(column.body, '')}</span>`;
 
             card.append(title, body);
             layerGrid.appendChild(card);
@@ -164,14 +193,14 @@ export default {
 
         const nextCopy = document.createElement('div');
         const nextTitle = document.createElement('h2');
-        nextTitle.textContent = text(content.nextStep.heading, 'Ready for review');
+        nextTitle.innerHTML = `<span data-i18n="landing.next.heading">${text(content.nextStep.heading, 'Ready for review')}</span>`;
         const nextBody = document.createElement('p');
-        nextBody.textContent = text(content.nextStep.body, '');
+        nextBody.innerHTML = `<span data-i18n="landing.next.body">${text(content.nextStep.body, '')}</span>`;
         nextCopy.append(nextTitle, nextBody);
 
-        next.append(nextCopy, createAction(content.nextStep.action, 'primary'));
+        next.append(nextCopy, createAction({ ...content.nextStep.action, i18nKey: 'landing.next.action' }, 'primary'));
 
-        page.append(hero, strip, organization, infrastructure, next);
+        page.append(hero, next);
         container.appendChild(page);
     }
 };

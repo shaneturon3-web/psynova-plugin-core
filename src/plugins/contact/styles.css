@@ -1,0 +1,103 @@
+.contact {
+    max-width: var(--pn-max-width);
+    margin: 0 auto;
+    padding: var(--pn-section-space) 1.5rem;
+}
+
+.contact__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    border: 1px solid var(--pn-border);
+    border-radius: var(--pn-radius-xl);
+    background: var(--pn-surface);
+    padding: clamp(2rem, 5vw, 4rem);
+}
+
+.contact__eyebrow {
+    margin: 0 0 1rem;
+    color: var(--pn-brass);
+    font-size: var(--pn-font-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.contact h1 {
+    margin: 0;
+    color: var(--pn-text);
+    font-size: var(--pn-font-3xl);
+    line-height: 0.95;
+}
+
+.contact__lead,
+.contact__body {
+    max-width: var(--pn-reading-width);
+    color: var(--pn-text-soft);
+    font-size: var(--pn-font-lg);
+    line-height: 1.55;
+}
+
+.contact__lead {
+    margin: 1.25rem 0 0;
+    font-weight: 700;
+}
+
+.contact__body {
+    margin: 0.75rem 0 0;
+}
+
+.contact__form {
+    display: grid;
+    gap: 1rem;
+}
+
+.contact__field {
+    display: grid;
+    gap: 0.4rem;
+    color: var(--pn-text);
+    font-size: var(--pn-font-sm);
+    font-weight: 700;
+}
+
+.contact__field input,
+.contact__field textarea {
+    width: 100%;
+    border: 1px solid var(--pn-border);
+    border-radius: var(--pn-radius-md);
+    background: var(--pn-surface-soft);
+    color: var(--pn-text);
+    padding: 0.85rem 0.95rem;
+    font: inherit;
+}
+
+.contact__button {
+    width: fit-content;
+    min-height: 2.75rem;
+    border: 1px solid var(--pn-action);
+    border-radius: var(--pn-radius-pill);
+    background: var(--pn-action);
+    color: var(--pn-action-text);
+    padding: 0 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.contact__note {
+    margin: 0;
+    color: var(--pn-text-muted);
+    font-size: var(--pn-font-sm);
+    line-height: 1.45;
+}
+
+@media (max-width: 899px) {
+    .contact__panel {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .contact {
+        padding-inline: 1rem;
+    }
+}

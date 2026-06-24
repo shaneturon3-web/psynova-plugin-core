@@ -1,6 +1,7 @@
 export function getCurrentRoute() {
     const hash = window.location.hash || '#/';
-    const route = hash.startsWith('#') ? hash.slice(1) : hash;
+    const routeWithQuery = hash.startsWith('#') ? hash.slice(1) : hash;
+    const route = routeWithQuery.split('?')[0] || '/';
 
     return route.startsWith('/') ? route : `/${route}`;
 }

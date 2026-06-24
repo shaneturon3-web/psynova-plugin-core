@@ -18,7 +18,7 @@ function createPluginContainer(plugin) {
     return section;
 }
 
-export function render(route = '/', plugins = []) {
+export function render(route = '/', plugins = [], context = {}) {
     const app = document.getElementById('app');
 
     if (!app) {
@@ -36,7 +36,7 @@ export function render(route = '/', plugins = []) {
     for (const plugin of activePlugins) {
         const container = createPluginContainer(plugin);
         shell.appendChild(container);
-        plugin.render(container, { route });
+        plugin.render(container, { ...context, route });
     }
 
     if (activePlugins.length === 0) {

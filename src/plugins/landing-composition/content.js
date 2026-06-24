@@ -4,15 +4,17 @@ export default {
         heading: 'Professional Practice Infrastructure',
         subheading: 'A modular operating layer for organizations that need clean public presence, structured capabilities, and deployable digital infrastructure.',
         primaryAction: {
-            label: 'Review capabilities',
-            href: '#/capabilities'
+            i18nKey: 'landing.hero.primaryAction',
+            label: 'View operating map',
+            href: '#/operating-map'
         },
         secondaryAction: {
-            label: 'View organization fit',
-            href: '#/organization'
+            i18nKey: 'landing.hero.secondaryAction',
+            label: 'Define practice shape',
+            href: '#/organizations'
         },
         systemPanel: {
-            title: 'Core System',
+            title: 'Engine Base',
             items: [
                 'Public Surface',
                 'Capability Registry',

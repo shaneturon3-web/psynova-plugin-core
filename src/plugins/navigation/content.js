@@ -1,33 +1,33 @@
 export default {
     items: [
         {
-            id: 'home',
-            label: 'Home',
-            route: '#/',
+            id: "home",
+            label: "Accueil",
+            route: "#/",
             enabled: true
         },
         {
-            id: 'capabilities',
-            label: 'Capabilities',
-            route: '#/capabilities',
+            id: "operating-map",
+            label: "Carte",
+            route: "#/operating-map",
             enabled: true
         },
         {
-            id: 'organization',
-            label: 'Organization',
-            route: '#/organization',
+            id: "organizations",
+            label: "Organisation",
+            route: "#/organizations",
             enabled: true
         },
         {
-            id: 'system-review',
-            label: 'System Review',
-            route: '#/system-review',
+            id: "diagnostic",
+            label: "Diagnostic",
+            route: "#/diagnostic",
             enabled: true
         },
         {
-            id: 'contact',
-            label: 'Contact',
-            route: '#/contact',
+            id: "contact",
+            label: "Contact",
+            route: "#/contact",
             enabled: true
         }
     ]

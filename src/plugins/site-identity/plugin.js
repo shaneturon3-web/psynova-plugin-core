@@ -16,7 +16,7 @@ export default {
 
         const title = document.createElement('h1');
         title.className = 'site-title';
-        title.textContent = text(site.name, 'PsyNova');
+        title.textContent = text(site.name, '<span data-i18n="canary.brand">PsyNova</span>');
 
         const line = document.createElement('p');
         line.className = 'site-line';
