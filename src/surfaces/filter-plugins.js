@@ -1,4 +1,4 @@
-function normalizeRoute(route = "/") {
+export function normalizeRoute(route = "/") {
     const raw = String(route || "/").trim();
     const withoutHash = raw.startsWith("#") ? raw.slice(1) : raw;
     const withoutQuery = withoutHash.split("?")[0];
@@ -9,6 +9,20 @@ function normalizeRoute(route = "/") {
     }
 
     return withSlash || "/";
+}
+
+export function resolveRouteForSurface(route = "/", profile = {}) {
+    const normalizedRoute = normalizeRoute(route);
+
+    if (!profile || !Array.isArray(profile.routes) || profile.routes.length === 0) {
+        return normalizedRoute;
+    }
+
+    const allowedRoutes = new Set(profile.routes.map((profileRoute) => {
+        return normalizeRoute(profileRoute);
+    }));
+
+    return allowedRoutes.has(normalizedRoute) ? normalizedRoute : "/";
 }
 
 function pluginMatchesRoute(plugin, route) {
